@@ -46,8 +46,12 @@ jobs:
             cd /home/ubuntu/Project-Nestjs-app-task-01
             echo "Running tests..."
             npm run test
+            echo "Starting the application"
+            npm run start
+            sudo npm install -g pm2
             echo "Starting application with pm2..."
-            ./node_modules/.bin/pm2 start npm --name "typescript-starter" -- run start
-            ./node_modules/.bin/pm2 save
+            pm2 start dist/main.js --name "typescript-starter"
+            pm2 startup
+            pm2 save
             echo "Deployment completed."
           EOF
