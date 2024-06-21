@@ -43,7 +43,7 @@ jobs:
           echo "Connecting to EC2 instance to run deployment commands..."
           ssh -o StrictHostKeyChecking=no -i key.pem $EC2_USER@$EC2_HOST << 'EOF'
             echo "Connected to EC2 instance."
-            cd /home/ubuntu/typescript-starter
+            cd /home/ubuntu/Project-Nestjs-app-task-01
             echo "Running tests..."
             npm run test
             echo "Starting application with pm2..."
