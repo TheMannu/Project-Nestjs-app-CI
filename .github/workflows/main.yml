@@ -20,7 +20,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: sudo npm install --legacy-peer-deps
+        run: npm install --legacy-peer-deps
 
       - name: Run Tests
         run: npm test
@@ -45,13 +45,9 @@ jobs:
             echo "Connected to EC2 instance."
             cd /home/ubuntu/Project-Nestjs-app-task-01
             echo "Running tests..."
-            sudo npm run test
-            echo "Starting the application"
-            sudo npm run start
-            sudo npm install -g pm2
+            npm run test
             echo "Starting application with pm2..."
-            pm2 start dist/main.js --name "typescript-starter"
-            pm2 startup
-            pm2 save
+            ./node_modules/.bin/pm2 start npm --name "typescript-starter" -- run start
+            ./node_modules/.bin/pm2 save
             echo "Deployment completed."
           EOF
